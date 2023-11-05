@@ -1,8 +1,10 @@
 @charset "UTF-8";
-
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;600;700&display=swap");
 /* variables */
 :root {
   --primary-color: #000;
+  --normal-weight: 400;
+  --bold-weight: 700;
 }
 /* reset */
 html {
@@ -27,8 +29,75 @@ svg {
   display: block;
 }
 body {
-  color: black;
+  font-family: "Oswald", sans-serif;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
 }
 /* general */
 
 /* layout */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3aa60;
+  width: 100%;
+  min-height: 100vh;
+}
+.result {
+  display: flex;
+  height: 7rem;
+  width: 37.5rem;
+  align-items: center;
+  gap: 1.5rem;
+}
+.apple-logo {
+  width: 4rem;
+}
+.score {
+  padding-top: 1rem;
+  font-size: 4.5rem;
+}
+
+.ground {
+  display: grid;
+  width: 37.5rem;
+  height: 45.75rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+.cell {
+  border-radius: 0.6rem;
+  background-color: #c0eda6;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.snake-body,
+.snake-head {
+  background-color: #ef6262;
+}
+.snake-head {
+  position: relative;
+}
+.snake-head::before,
+.snake-head::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 2rem;
+  background-color: white;
+  background-image: linear-gradient(white 60%, black 40%);
+}
+.snake-head::before {
+  top: 2.5rem;
+  left: 1.5rem;
+}
+.snake-head::after {
+  top: 2.5rem;
+  right: 1.5rem;
+}
+
+.apple-on {
+  background-position: center;
+  background-size: 72%;
+  background-repeat: no-repeat;
+  background-image: url("../img/apple-logo.png");
+}
