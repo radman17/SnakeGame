@@ -2,7 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;600;700&display=swap");
 /* variables */
 :root {
-  --primary-color: #000;
+  --snake-color: #ef6262;
+  --cell-color: #c0eda6;
+  --background-color: #f3aa60;
+  --button-color: rgb(0, 136, 255);
   --normal-weight: 400;
   --bold-weight: 700;
 }
@@ -20,6 +23,7 @@ html {
   font: inherit;
   border: none;
   outline: none;
+  color: inherit;
 }
 img,
 video,
@@ -40,7 +44,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f3aa60;
+  background-color: var(--background-color);
   width: 100%;
   min-height: 100vh;
 }
@@ -67,13 +71,15 @@ body {
 }
 .cell {
   border-radius: 0.6rem;
-  background-color: #c0eda6;
+  background-color: var(--cell-color);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 .snake-body,
 .snake-head {
-  background-color: #ef6262;
+  background-color: var(--snake-color);
 }
+
+/* snake head  */
 .snake-head {
   position: relative;
 }
@@ -95,9 +101,58 @@ body {
   right: 1.5rem;
 }
 
+/* apple */
 .apple-on {
   background-position: center;
   background-size: 72%;
   background-repeat: no-repeat;
   background-image: url("../img/apple-logo.png");
+}
+
+/* playing state */
+.playing .dark-overlay {
+  display: none;
+}
+
+/* start playing and playing agian states */
+.start-playing .dark-overlay,
+.playing-again .dark-overlay {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #000000a7;
+}
+.start-playing .play.btn,
+.playing-again .play.btn,
+.playing-again .dark-overlay .result {
+  z-index: 2;
+  border-radius: 1rem;
+  font-size: 3rem;
+  width: 37.5rem;
+  height: 8rem;
+}
+.playing-again .dark-overlay .result {
+  background-color: var(--snake-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+.start-playing .play.btn,
+.playing-again .play.btn {
+  background-color: var(--button-color);
+  cursor: pointer;
+}
+
+.start-playing .dark-overlay .result {
+  display: none;
+}
+.playing-again > .result {
+  visibility: hidden;
 }
