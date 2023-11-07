@@ -44,6 +44,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: var(--background-color);
   width: 100%;
   min-height: 100vh;
@@ -154,5 +155,54 @@ body {
   display: none;
 }
 .playing-again > .result {
-  visibility: hidden;
+  display: none;
+}
+
+@media screen and (max-width: 41em) {
+  .result {
+    width: 27.5rem;
+  }
+  .ground {
+    width: 27.5rem;
+    height: 35.75rem;
+  }
+  .snake-head::before {
+    top: 1.5rem;
+    left: 1rem;
+  }
+  .snake-head::after {
+    top: 1.5rem;
+    right: 1rem;
+  }
+
+  .start-playing .play.btn,
+  .playing-again .play.btn,
+  .playing-again .dark-overlay .result {
+    width: 27.5rem;
+    height: 8rem;
+  }
+}
+@media screen and (max-width: 28em) {
+  .result {
+    width: 22.5rem;
+  }
+  .ground {
+    width: 22.5rem;
+    height: 30.75rem;
+  }
+  .snake-head::before {
+    top: 1.2rem;
+    left: 0.5rem;
+  }
+  .snake-head::after {
+    top: 1.2rem;
+    right: 0.5rem;
+  }
+
+  .start-playing .play.btn,
+  .playing-again .play.btn,
+  .playing-again .dark-overlay .result {
+    width: 22.5rem;
+    height: 8rem;
+  }
 }
