@@ -115,7 +115,7 @@ body {
   display: none;
 }
 
-/* start playing and playing agian states */
+/* start playing and playing again states */
 .start-playing .dark-overlay,
 .playing-again .dark-overlay {
   display: flex;
@@ -130,7 +130,7 @@ body {
   background-color: #000000a7;
 }
 .start-playing .play.btn,
-.playing-again .play.btn,
+.playing-again .play-again.btn,
 .playing-again .dark-overlay .result {
   z-index: 2;
   border-radius: 1rem;
@@ -146,7 +146,7 @@ body {
   gap: 5rem;
 }
 .start-playing .play.btn,
-.playing-again .play.btn {
+.playing-again .play-again.btn {
   background-color: var(--button-color);
   cursor: pointer;
 }
@@ -154,8 +154,43 @@ body {
 .start-playing .dark-overlay .result {
   display: none;
 }
-.playing-again > .result {
+.playing-again .play.btn {
   display: none;
+}
+.start-playing .play-again.btn {
+  display: none;
+}
+
+/* directions for snake head */
+.top-d {
+  transform: rotate(180deg);
+}
+.right-d::after,
+.right-d::before {
+  transform: rotate(270deg);
+}
+.right-d::before {
+  top: 3rem;
+  left: 3.7rem;
+}
+.right-d::after {
+  top: 1rem;
+  right: 1.5rem;
+}
+.bottom-d {
+  transform: rotate(360deg);
+}
+.left-d::after,
+.left-d::before {
+  transform: rotate(90deg);
+}
+.left-d::before {
+  top: 3rem;
+  left: 1.5rem;
+}
+.left-d::after {
+  top: 1rem;
+  right: 3.7rem;
 }
 
 @media screen and (max-width: 41em) {
@@ -181,6 +216,23 @@ body {
     width: 27.5rem;
     height: 8rem;
   }
+
+  .right-d::before {
+    top: 2rem;
+    left: 2rem;
+  }
+  .right-d::after {
+    top: 0.5rem;
+    right: 1.5rem;
+  }
+  .left-d::before {
+    top: 0.5rem;
+    left: 1.5rem;
+  }
+  .left-d::after {
+    top: 2rem;
+    right: 2rem;
+  }
 }
 @media screen and (max-width: 28em) {
   .result {
@@ -204,5 +256,21 @@ body {
   .playing-again .dark-overlay .result {
     width: 22.5rem;
     height: 8rem;
+  }
+  .right-d::before {
+    top: 1.8rem;
+    left: 1.5rem;
+  }
+  .right-d::after {
+    top: 0.3rem;
+    right: 1.2rem;
+  }
+  .left-d::before {
+    top: 0.3rem;
+    left: 1.2rem;
+  }
+  .left-d::after {
+    top: 1.8rem;
+    right: 1.5rem;
   }
 }
