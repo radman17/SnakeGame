@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;600;700&display=swap");
 /* variables */
 :root {
-  --snake-color: #ef6262;
-  --cell-color: #c0eda6;
-  --background-color: #f3aa60;
-  --button-color: rgb(0, 136, 255);
+  --snake-color: rgb(80, 242, 88);
+  --cell-color: rgb(32, 32, 32);
+  --background-color: grey;
+  --button-color: orangered;
   --normal-weight: 400;
   --bold-weight: 700;
 }
@@ -52,7 +52,7 @@ body {
 .result {
   display: flex;
   height: 7rem;
-  width: 37.5rem;
+  width: 45rem;
   align-items: center;
   gap: 1.5rem;
 }
@@ -66,14 +66,13 @@ body {
 
 .ground {
   display: grid;
-  width: 37.5rem;
-  height: 45.75rem;
-  grid-template-columns: repeat(6, 1fr);
+  width: 45rem;
+  height: 45rem;
+  grid-template-columns: repeat(10, 1fr);
 }
 .cell {
-  border-radius: 0.6rem;
   background-color: var(--cell-color);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  border: 0.1rem solid black;
 }
 .snake-body,
 .snake-head {
@@ -83,23 +82,8 @@ body {
 /* snake head  */
 .snake-head {
   position: relative;
-}
-.snake-head::before,
-.snake-head::after {
-  content: "";
-  position: absolute;
-  width: 1rem;
-  height: 2rem;
-  background-color: white;
-  background-image: linear-gradient(white 60%, black 40%);
-}
-.snake-head::before {
-  top: 2.5rem;
-  left: 1.5rem;
-}
-.snake-head::after {
-  top: 2.5rem;
-  right: 1.5rem;
+  background-image: url(../img/snake-head.png);
+  background-size: cover;
 }
 
 /* apple */
@@ -135,7 +119,7 @@ body {
   z-index: 2;
   border-radius: 1rem;
   font-size: 3rem;
-  width: 37.5rem;
+  width: 45rem;
   height: 8rem;
 }
 .playing-again .dark-overlay .result {
@@ -165,32 +149,16 @@ body {
 .top-d {
   transform: rotate(180deg);
 }
-.right-d::after,
-.right-d::before {
-  transform: rotate(270deg);
-}
-.right-d::before {
-  top: 3rem;
-  left: 3.7rem;
-}
-.right-d::after {
-  top: 1rem;
-  right: 1.5rem;
+
+.right-d {
+  transform: rotate(-90deg);
 }
 .bottom-d {
   transform: rotate(360deg);
 }
-.left-d::after,
-.left-d::before {
+
+.left-d {
   transform: rotate(90deg);
-}
-.left-d::before {
-  top: 3rem;
-  left: 1.5rem;
-}
-.left-d::after {
-  top: 1rem;
-  right: 3.7rem;
 }
 
 @media screen and (max-width: 41em) {
@@ -199,7 +167,7 @@ body {
   }
   .ground {
     width: 27.5rem;
-    height: 35.75rem;
+    height: 27.5rem;
   }
   .snake-head::before {
     top: 1.5rem;
@@ -240,7 +208,7 @@ body {
   }
   .ground {
     width: 22.5rem;
-    height: 30.75rem;
+    height: 22.5rem;
   }
   .snake-head::before {
     top: 1.2rem;

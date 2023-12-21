@@ -10,8 +10,8 @@ const scoreElInPlyaingAgain = document.querySelector('.score-in-playing-again');
 
 // VARIABLES
 
-const eightLeftCells = [0, 6, 12, 18, 24, 30, 36, 42];
-const eightRightCells = [5, 11, 17, 23, 29, 35, 41, 47];
+const eightLeftCells = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+const eightRightCells = [9, 19, 29, 39, 49, 59, 69, 79, 89, 99];
 let cellsArr = [];
 let cellEls = [];
 let snakeIndexes = [];// first index is snake head
@@ -36,12 +36,12 @@ const removeDirectionClasses = function (el) { // removes all classes (which has
 }
 const move = function (direction, moveDistance) {
 
-    if (direction === "top" && (snakeIndexes[0] - 6 < 0 || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
+    if (direction === "top" && (snakeIndexes[0] - 10 < 0 || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
         stopPlaying();
     } else if (direction === "right" && (eightRightCells.includes(snakeIndexes[0]) || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
 
         stopPlaying();
-    } else if (direction === 'bottom' && (snakeIndexes[0] + 6 > 47 || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
+    } else if (direction === 'bottom' && (snakeIndexes[0] + 6 > 99 || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
         stopPlaying();
     } else if (direction === "left" && (eightLeftCells.includes(snakeIndexes[0]) || cellsArr[snakeIndexes[0] + moveDistance] === 0)) {
         stopPlaying();
@@ -85,7 +85,7 @@ const move = function (direction, moveDistance) {
             cellEls[appleIndex].classList.remove('apple-on');
             cellsArr[appleIndex] = null;
             do {
-                appleIndex = Math.trunc(Math.random() * 48);
+                appleIndex = Math.trunc(Math.random() * 100);
             } while (cellsArr[appleIndex] === 0);
             cellsArr[appleIndex] = 1;
             cellEls[appleIndex].classList.add('apple-on')
@@ -110,7 +110,7 @@ const reset = function () {
     stopMoving();
     playing = true;
     groundEl.innerHTML = '';
-    for (let i = 0; i < 48; i++) {
+    for (let i = 0; i < 100; i++) {
         cellsArr[i] = null;
         groundEl.insertAdjacentHTML("beforeend", `<span class="cell"></span>`)
     }
@@ -121,11 +121,11 @@ const reset = function () {
 
 
     // PLACE APPPLE
-    appleIndex = 38;
+    appleIndex = 48;
     cellsArr[appleIndex] = 1; // 1 means apple on cellsArr
     cellEls[appleIndex].classList.add('apple-on');
     // PLACE THE SNAEK
-    snakeIndexes = [26, 20, 14];
+    snakeIndexes = [44, 43, 42];
     cellsArr[snakeIndexes[0]] = 0; // 0 means snake body or head in cellsArr 
     cellEls[snakeIndexes[0]].classList.add('snake-head')
     for (let i = 1; i < snakeIndexes.length; i++) {
@@ -134,7 +134,7 @@ const reset = function () {
     }
     // determine snake direction
     snakeDirection = 2; // 0 , 1, 2, 3  === top , right , bottom , left
-    cellEls[snakeIndexes[0]].classList.add('bottom-d');
+    cellEls[snakeIndexes[0]].classList.add('right-d');
 
     allowedToMove = true;
 
@@ -167,11 +167,11 @@ document.addEventListener('keydown', function (e) {
             cellEls[snakeIndexes[0]].classList.add('top-d');
             allowedToMove = false;
 
-            if (cellsArr[snakeIndexes[0] - 6] === 0 || snakeIndexes[0] - 6 < 0) {
+            if (cellsArr[snakeIndexes[0] - 10] === 0 || snakeIndexes[0] - 10 < 0) {
                 stopPlaying();
             } else {
                 moveToTopId = setInterval(
-                    move, 250, "top", -6
+                    move, 250, "top", -10
                 );
             }
 
@@ -205,12 +205,12 @@ document.addEventListener('keydown', function (e) {
             cellEls[snakeIndexes[0]].classList.add('bottom-d')
             allowedToMove = false;
 
-            if (cellsArr[snakeIndexes[0] + 6] === 0 || snakeIndexes[0] + 6 > 47) {
+            if (cellsArr[snakeIndexes[0] + 10] === 0 || snakeIndexes[0] + 10 > 99) {
                 stopPlaying();
 
             } else {
                 moveToBottomId = setInterval(
-                    move, 250, "bottom", +6
+                    move, 250, "bottom", +10
                 );
             }
 
