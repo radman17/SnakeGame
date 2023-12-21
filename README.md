@@ -7,7 +7,7 @@
 This is a simple web-based version of the classic Snake game, where players control a snake that grows longer as it eats food and must avoid running into itself or the walls.
 
 ### Appearance of the game
-![](snake-game-ss.JPG)
+![](game-ss.JPG)
 
 ### Get started
 
